@@ -1,5 +1,4 @@
 describe("Side", function() {
-	var Side = require('../../lib/cats/Side');
 	var side;
 
 	beforeEach(function() {

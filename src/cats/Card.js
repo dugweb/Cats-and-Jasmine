@@ -1,6 +1,6 @@
 /* ------------------------- */
 /* Card Class */
-var Side = require('../../lib/cats/Side.js');
+
 
 function Card() {
 }
@@ -29,9 +29,11 @@ Card.prototype.rotate = function() {
 	return this.rotation;
 }
 
+Card.prototype.match = function(i, j) {
 
+}
 
 
 
 // This line is required to expose the object with the require function
-module.exports = Card;
+// module.exports = Card;

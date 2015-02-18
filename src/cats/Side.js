@@ -61,4 +61,4 @@ Side.prototype.rotate = function() {
 
 
 // This line is required to expose the object with the require function
-module.exports = Side;
+// module.exports = Side;
