@@ -5,6 +5,9 @@ describe("Card", function() {
 	beforeEach(function() {
 		card = new Card();
 	});
+	afterEach(function() {
+		card = null;
+	});
 	
 	it("should set sides", function() {
 		card.setSide("top", "bear", "back");
@@ -32,16 +35,5 @@ describe("Card", function() {
 	// 	expect(card.setType("bear")).toEqual("bear");
 	// });
 	
-
-	describe("Match", function() {
-		it("should match two sides", function() {
-			card.setSide("top", "bear", "head");
-			card.setSide("left", "bear", "tail");
-
-			var result = card.match(0, 1);
-
-			expect(result).toBeTruthy();
-		});
-	});
 });
 

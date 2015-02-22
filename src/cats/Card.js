@@ -10,9 +10,18 @@ Card.prototype.setSide = function(side, val, half) {
 	var side = new Side(side, val, half)
 	this.sides.push(side);
 	if (this.sides.length > 4) {
-		this.sides.pop();
+		this.sides.shift();
 	}
+	this.setDescription();
 	return side
+}
+
+Card.prototype.description;
+Card.prototype.setDescription = function() {
+	this.description = "";
+	for (var i = 0; i < this.sides.length; i++) {
+		this.description += this.sides[i].direction + ": " + this.sides[i].type + " " + this.sides[i].half + "| \n";
+	};
 }
 Card.prototype.rotation = 0;
 Card.prototype.sides = [];
@@ -28,12 +37,3 @@ Card.prototype.rotate = function() {
 	}
 	return this.rotation;
 }
-
-Card.prototype.match = function(i, j) {
-
-}
-
-
-
-// This line is required to expose the object with the require function
-// module.exports = Card;
