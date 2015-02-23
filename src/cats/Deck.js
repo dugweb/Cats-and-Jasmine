@@ -1,9 +1,9 @@
 function Deck() {
-	var cards = []
+	this.cards = []
 }
 
 Deck.prototype.sides = ['top', 'right', 'bottom', 'left']
-// Deck.prototype.cards = [];
+
 Deck.prototype.addCard = function(arr) {
 	var c = new Card();
 
@@ -15,7 +15,7 @@ Deck.prototype.addCard = function(arr) {
 }
 
 Deck.prototype.seedCards = function(arr) {
-	this.cards = [];
+	// this.cards = [];
 	for (var i = 0; i < arr.length; i++) {
 		this.addCard(arr[i]);
 	}

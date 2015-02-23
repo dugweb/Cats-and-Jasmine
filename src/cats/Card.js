@@ -3,6 +3,9 @@
 
 
 function Card() {
+	this.description;
+	this.sides = [];
+	this.rotation = 0;
 }
 
 
@@ -16,15 +19,12 @@ Card.prototype.setSide = function(side, val, half) {
 	return side
 }
 
-Card.prototype.description;
 Card.prototype.setDescription = function() {
 	this.description = "";
 	for (var i = 0; i < this.sides.length; i++) {
 		this.description += this.sides[i].direction + ": " + this.sides[i].type + " " + this.sides[i].half + "| \n";
 	};
 }
-Card.prototype.rotation = 0;
-Card.prototype.sides = [];
 
 Card.prototype.rotate = function() {
 	this.sides.forEach(function(el) {

@@ -1,6 +1,12 @@
 /* -------------------------- */
 /* Side Class */
 function Side(direction, type, half) {
+	
+	/* Instance Variables */
+	this.type;
+	this.half;
+	this.direction;
+
 	this.setDirection(direction);
 	this.setType(type);
 	if (this.half == undefined) {
@@ -8,19 +14,16 @@ function Side(direction, type, half) {
 	}
 }
 
-Side.prototype.type;
 Side.prototype.setType = function(type) {
 	this.type = type;
 	return this.type;
 }
 
-Side.prototype.half;
 Side.prototype.setHalf = function(half) {
 	this.half = half;
 	return this.half;
 }
 
-Side.prototype.direction;
 Side.prototype.setDirection = function(direction) {
 	
 	if (direction == undefined) {
