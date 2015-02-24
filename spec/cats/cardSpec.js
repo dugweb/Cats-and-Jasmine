@@ -13,7 +13,8 @@ describe("Card", function() {
 		card.setSide("top", "bear", "back");
 		card.setSide("right", "pig", "front");
 		
-		expect(card.sides.length).toEqual(2);
+		expect(card.sides['top']).toBeDefined();
+		expect(card.sides['right']).toBeDefined();
 	});
 	
 	it("should rotate sides", function() {
@@ -22,18 +23,21 @@ describe("Card", function() {
 		expect(card.rotate()).toBeGreaterThan(0);
 	});
 	
-	it("should not hold more than 4 sides", function() {
+	it("should only take top, right, bottom, and left directions", function() {
 		card.setSide("top", "bear", "back");
-		card.setSide("top", "bear", "back");
-		card.setSide("top", "bear", "back");
-		card.setSide("top", "bear", "back");
-		card.setSide("top", "bear", "back");
+		card.setSide("right", "bear", "back");
+		card.setSide("bottom", "bear", "back");
+		card.setSide("left", "bear", "back");
+		card.setSide("David", "bear", "back");
+		card.setSide(123, "bear", "back");
+		card.setSide("judist", "bear", "back");
 
-		expect(card.sides.length).toEqual(4);
+		var count = 0;
+		for (var i in card.sides) {
+			count++;
+		}
+		expect(count).toEqual(4);
 	});
-	// it("should set the type", function() {
-	// 	expect(card.setType("bear")).toEqual("bear");
-	// });
 	
 });
 

@@ -15,7 +15,6 @@ Deck.prototype.addCard = function(arr) {
 }
 
 Deck.prototype.seedCards = function(arr) {
-	// this.cards = [];
 	for (var i = 0; i < arr.length; i++) {
 		this.addCard(arr[i]);
 	}
@@ -27,10 +26,9 @@ Deck.prototype.doCardsMatch = function(index1, index2) {
 	var card1 = this.cards[index1];
 	var card2 = this.cards[index2];
 
-	//console.log(this.cards);
-	card1.sides.forEach(function(side) {
+	type = card1.sides['right'].type == card2.sides['left'].type;
+	half = card1.sides['right'].half != card2.sides['left'].half;
 
-		// console.log(side);
+	return type && half;
 
-	});
 }

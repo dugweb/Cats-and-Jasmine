@@ -44,15 +44,14 @@ describe("Deck", function() {
 	});
 
 	it("The first card should be the same as the seeded card", function() {
-		console.log(deck.cards);
-		console.log(seed);
 		expect(deck.cards.length).toEqual(3);
-		expect(deck.cards[0].sides[0].type).toEqual(seed[0][0].type);
-		expect(deck.cards[0].sides[0].half).toEqual(seed[0][0].half);
+		expect(deck.cards[0].sides['top'].type).toEqual(seed[0][0].type);
+		expect(deck.cards[0].sides['top'].half).toEqual(seed[0][0].half);
 	});
 
 	it("should check if two cards have a matching side", function() {
 		expect(deck.doCardsMatch(0,1)).toBeTruthy();
+		expect(deck.doCardsMatch(0,2)).toBeFalsy();
 	});
 
 });

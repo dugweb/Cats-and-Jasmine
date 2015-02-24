@@ -6,12 +6,13 @@ function Side(direction, type, half) {
 	this.type;
 	this.half;
 	this.direction;
+	this.description;
 
-	this.setDirection(direction);
 	this.setType(type);
 	if (this.half == undefined) {
 		this.setHalf(half);
 	}
+	this.setDirection(direction);
 }
 
 Side.prototype.setType = function(type) {
@@ -26,25 +27,17 @@ Side.prototype.setHalf = function(half) {
 
 Side.prototype.setDirection = function(direction) {
 	
-	if (direction == undefined) {
-		return this.direction;
-	}
-
-	switch (direction.charAt(0).toLowerCase()) {
-		case "t":
-			direction = "top"; break;
-		case "r":
-			direction = "right"; break;
-		case "b":
-			direction = "bottom"; break;
-		case "l":
-			direction = "left"; break;
-		default:
-			direction = null; break;
-	}
 	
-	this.direction = direction;
+	
+	this.direction = validateDirection(direction);
+	this.setDescription();
+
 	return this.direction;
+}
+
+Side.prototype.setDescription = function() {
+	this.description = this.direction + ": " + this.type + " " + this.half;
+	return this.description;
 }
 
 Side.prototype.rotate = function() {
@@ -63,5 +56,28 @@ Side.prototype.rotate = function() {
 }
 
 
-// This line is required to expose the object with the require function
-// module.exports = Side;
+/* Helper Functions */
+function validateDirection(direction) {
+	if (direction == undefined || isNumeric(direction)) {
+		return false;
+	}
+
+	switch (direction.charAt(0).toLowerCase()) {
+		case "t":
+			direction = "top"; break;
+		case "r":
+			direction = "right"; break;
+		case "b":
+			direction = "bottom"; break;
+		case "l":
+			direction = "left"; break;
+		default:
+			direction = 'top'; break;
+	}
+
+	return direction;
+}
+
+function isNumeric(n) {
+	return !isNaN(parseFloat(n)) && isFinite(n);
+}
