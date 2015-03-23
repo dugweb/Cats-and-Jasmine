@@ -1,0 +1,65 @@
+$padding: 10px;
+$card-height: 25vh;
+
+body, html {
+	padding:0;
+	margin:0;
+}
+div {
+	box-sizing: border-box;
+}
+#output {
+	padding:20px;
+}
+
+.card {
+
+	box-shadow: 0 0 0 1px rgba(50,50,50,1);
+	width:33%;
+	height: $card-height;
+	position: relative;
+	float: left;
+	background: #fff;
+	&:nth-child(3n) {
+		margin-right:0;
+	}
+}
+
+.side {
+	position: absolute;
+	padding:$padding;
+	pointer-events:none;
+	display: table;
+	p {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+.right, .left {
+	height:100%;
+}
+.right {
+	// line-height: $line-height;
+	text-align:right;
+	right:0;
+}
+.left {
+	// line-height: $line-height;
+	vertical-align: middle;
+	left:0;
+}
+.top, .bottom {
+	text-align: center;
+	width: 100%;
+}
+.top {
+	top: 0;
+}
+.bottom {
+	bottom:0;
+}
+
+.matching {
+	color: green;
+}

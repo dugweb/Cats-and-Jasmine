@@ -13,11 +13,16 @@ describe("Card", function() {
 		card.setSide("top", "bear", "back");
 		card.setSide("right", "pig", "front");
 		
-		expect(card.sides['top']).toBeDefined();
-		expect(card.sides['right']).toBeDefined();
+		expect(card.sides[0]).toBeDefined();
+		expect(card.sides[1]).toBeDefined();
 	});
 	
 	it("should rotate sides", function() {
+		card.setSide("top", "bear", "back");
+		card.setSide("right", "pig", "front");
+		card.setSide("bottom", "bear", "back");
+		card.setSide("left", "pig", "front");
+
 		card.rotate();
 		card.rotate();
 		expect(card.rotate()).toBeGreaterThan(0);
@@ -32,10 +37,9 @@ describe("Card", function() {
 		card.setSide(123, "bear", "back");
 		card.setSide("judist", "bear", "back");
 
-		var count = 0;
-		for (var i in card.sides) {
-			count++;
-		}
+		console.log(card);
+		var count = card.sides.length;
+		
 		expect(count).toEqual(4);
 	});
 	
