@@ -87,4 +87,15 @@ var cards = [
 ]
 
 
+/* Setup UI */
+var matchbutton = document.getElementById('check-matches');
+matchbutton.addEventListener('click', function() {
+	deck.checkAllMatches();
+});
+
+
+
+
+
+
 deck.seedCards(cards);

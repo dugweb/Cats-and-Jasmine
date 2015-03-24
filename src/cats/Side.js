@@ -56,7 +56,11 @@ Side.prototype.setMatching = function(matching) {
 	this.matching = matching;
 
 	// using jquery to deal with classes here b/c I'm lazy
-	$(el).toggleClass('matching');
+	if (!$(this.el).hasClass('mattching')) {
+		$(this.el).addClass('matching');	
+	}
+	
+	this.render();
 };
 
 
@@ -120,6 +124,28 @@ function validateDirection(direction) {
 
 	return direction;
 }
+
+function sideIndex(direction) {
+	if (direction == undefined) {
+		return false;
+	}
+	var code;
+	switch (validateDirection(direction)) {
+		case "top":
+			code = 0; break;
+		case "right":
+			code = 1; break;
+		case "bottom":
+			code = 2; break;
+		case "left":
+			code = 3; break;
+		default:
+			code = 0; break;
+	}
+
+	return code;
+}
+
 
 function isNumeric(n) {
 	return !isNaN(parseFloat(n)) && isFinite(n);

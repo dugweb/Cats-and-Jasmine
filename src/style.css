@@ -49,4 +49,5 @@ div {
   bottom: 0; }
 
 .matching {
-  color: green; }
+  color: green;
+  text-decoration: underline; }

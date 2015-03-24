@@ -41,7 +41,7 @@ Card.prototype.rotate = function() {
 	};
 	
 	// take last element and push it to the front
-	this.sides.push(this.sides.pop());
+	this.sides.unshift(this.sides.pop());
 
 	this.rotation += 90;
 	if (this.rotation >= 360) {
@@ -55,6 +55,10 @@ Card.prototype.rotate = function() {
 Card.prototype.validateDirection = function(direction) {
 	return validateDirection(direction);
 }
+
+Card.prototype.setMatching = function(side) {
+	this.sides[sideIndex(side)].setMatching(true);
+};
 
 Card.prototype.render = function() {
 

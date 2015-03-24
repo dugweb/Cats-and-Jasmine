@@ -8,6 +8,7 @@
 	
 		<h1>Judist</h1>
 		
+		<button id="check-matches">Check</button>
 
 		<div id="output">
 
