@@ -50,8 +50,8 @@ describe("Deck", function() {
 	});
 
 	it("should check if two cards have a matching side", function() {
-		expect(deck.doCardsMatch(deck.cards[0], deck.cards[1], 1, 3)).toBeTruthy();
-		expect(deck.doCardsMatch(deck.cards[0], deck.cards[1], 0, 2)).toBeFalsy();
+		expect(deck.doCardsMatch(deck.cards[0], deck.cards[1], 'right', 'left')).toBeTruthy();
+		expect(deck.doCardsMatch(deck.cards[0], deck.cards[1], 'bottom', 'top')).toBeFalsy();
 	});
 
 });
