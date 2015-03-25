@@ -1,11 +1,14 @@
 function Deck() {
 	this.cards = [];
 
-	this.el = document.createElement('div');
+	this.el = document.createElement('ul');
 	this.el.className = 'card-container';
 
 	this.output = document.getElementById('output');
 	this.output !== null ? output.appendChild(this.el): console.log("judist");
+	this.draggingIndex = 0;
+
+	this.self = this;
 }
 
 Deck.prototype.sides = ['top', 'right', 'bottom', 'left']
@@ -26,7 +29,7 @@ Deck.prototype.seedCards = function(arr) {
 	}
 
 	this.render();
-
+	this.listenersInit();
 	return this.cards;
 }
 
@@ -82,4 +85,58 @@ Deck.prototype.checkAllMatches = function() {
 	}
 
 	this.render();
+};
+
+/* Drag and drop cards */
+
+Deck.prototype.swapCardPosition = function(index1, index2) {
+	var cards = this.cards;
+	var temp = cards[index1];
+	cards[index1] = cards[index2];
+	cards[index2] = temp;
+
+	this.checkAllMatches();
+};
+
+
+Deck.prototype.listenersInit = function(	) {
+	for (var i = 0; i < this.cards.length; i++) {
+		var el = this.cards[i].el;
+
+		el.setAttribute('draggable', 'true');
+		el.addEventListener("dragstart", this.dragStartHandler.bind(this));
+		el.addEventListener("drag", this.dragHandler.bind(this));
+		el.addEventListener("drop", this.dropHandler.bind(this));
+		el.addEventListener("dragover", this.dragoverHandler.bind(this));
+		el.addEventListener("click", this.clickHandler.bind(this));
+	}
+
+};
+
+Deck.prototype.dragStartHandler = function(e) {
+	
+	this.draggingIndex = $(e.target).index();
+};
+
+
+Deck.prototype.dragHandler = function(e) {
+	// console.log("dragging");
+}
+
+Deck.prototype.dropHandler = function(e) {
+	e.preventDefault();
+
+	console.log(this.draggingIndex);
+	this.swapCardPosition($(e.target).index(), this.draggingIndex);
+}
+
+Deck.prototype.dragoverHandler = function(e) {
+	e.preventDefault();
+	// console.log(e.target);
+}
+
+Deck.prototype.clickHandler = function(e) {
+	this.rotate($(e.target).index());
+	console.log('clicked ' + $(e.target).index());
+	console.log(e);
 };

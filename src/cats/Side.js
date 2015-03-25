@@ -80,12 +80,12 @@ Side.prototype.rotate = function() {
 }
 
 Side.prototype.render = function() {
-	// if (this.el === undefined) {
+	if (this.el !== null) {
 		el = document.createElement('div');	
 		el.className = "side " + this.direction;
-	// } else {
-	// 	el = this.el;
-	// }
+	} else {
+		el = this.el;
+	}
 
 	el.innerHTML = "";
 
@@ -150,3 +150,4 @@ function sideIndex(direction) {
 function isNumeric(n) {
 	return !isNaN(parseFloat(n)) && isFinite(n);
 }
+
